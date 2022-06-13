@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.31911.260
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Io.TedTalk.Api", "Io.TedTalk.Api\Io.TedTalk.Api.csproj", "{125D8A68-E0E9-4783-BE4D-FAD587C9AFFC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Io.TedTalk.Data", "Io.TedTalk.Data\Io.TedTalk.Data.csproj", "{254CCFE6-4035-4170-9F6F-C42B68968003}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Io.TedTalk.Services", "Io.TedTalk.Services\Io.TedTalk.Services.csproj", "{88419FC2-5259-4F41-9D5D-BEF84154D888}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Io.TedTalk.Core", "Io.TedTalk.Core\Io.TedTalk.Core.csproj", "{4E24516A-20D1-4E19-8EF5-83F78FC467B7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{747575A8-A86E-44D3-A0E6-7726B8ADA351}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Io.TedTalk.Tests", "Io.TedTalk.Tests\Io.TedTalk.Tests.csproj", "{8B527818-744B-42E4-B8D8-CB01811CB497}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{125D8A68-E0E9-4783-BE4D-FAD587C9AFFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{125D8A68-E0E9-4783-BE4D-FAD587C9AFFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{125D8A68-E0E9-4783-BE4D-FAD587C9AFFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{125D8A68-E0E9-4783-BE4D-FAD587C9AFFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{254CCFE6-4035-4170-9F6F-C42B68968003}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{254CCFE6-4035-4170-9F6F-C42B68968003}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{254CCFE6-4035-4170-9F6F-C42B68968003}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{254CCFE6-4035-4170-9F6F-C42B68968003}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88419FC2-5259-4F41-9D5D-BEF84154D888}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88419FC2-5259-4F41-9D5D-BEF84154D888}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88419FC2-5259-4F41-9D5D-BEF84154D888}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88419FC2-5259-4F41-9D5D-BEF84154D888}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E24516A-20D1-4E19-8EF5-83F78FC467B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E24516A-20D1-4E19-8EF5-83F78FC467B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E24516A-20D1-4E19-8EF5-83F78FC467B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E24516A-20D1-4E19-8EF5-83F78FC467B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B527818-744B-42E4-B8D8-CB01811CB497}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B527818-744B-42E4-B8D8-CB01811CB497}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B527818-744B-42E4-B8D8-CB01811CB497}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B527818-744B-42E4-B8D8-CB01811CB497}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8B527818-744B-42E4-B8D8-CB01811CB497} = {747575A8-A86E-44D3-A0E6-7726B8ADA351}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A9804EBB-C18E-4433-A3F6-4E783F65D308}
+	EndGlobalSection
+EndGlobal
