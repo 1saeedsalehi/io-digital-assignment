@@ -1,6 +1,7 @@
 ﻿using System.Reflection;
 using AutoMapper;
 using FluentValidation;
+using Io.TedTalk.Api.Helpers;
 using IO.TedTalk.Api.Framrwork.AspNetCore.Config;
 using IO.TedTalk.Api.Framrwork.AspNetCore.Mvc.ExceptionHandling;
 using IO.TedTalk.Api.Framrwork.AspNetCore.Mvc.Results;
@@ -87,7 +88,6 @@ public class Startup
             options.UseSqlite($"Data Source={AppConsts.Database.DbPath}"));
 
 
-
         // Configure options
         services.Configure<Settings>(Configuration);
 
@@ -109,7 +109,8 @@ public class Startup
 
 
         //Register Services in DI
-        services.AddTransient<SampleService>();
+        services.AddTransient<SampleService>()
+            .AddTransient<FileHelper>();
 
        
 
