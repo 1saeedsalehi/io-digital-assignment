@@ -15,8 +15,11 @@ public static class AppConsts
             var folder = Environment.SpecialFolder.LocalApplicationData;
             var path = Environment.GetFolderPath(folder);
             DbPath = Path.Join(path, "io.tedtalk.db");
+
+            CsvFilePath = @"Csv\File\data.csv";
         }
 
+        public static string CsvFilePath { get;  private set; }
         public static string DbPath { get; }
     }
 }
