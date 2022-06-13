@@ -17,14 +17,17 @@ public class TedEntityTypeConfiguration : IEntityTypeConfiguration<Ted>
         builder.Property(x => x.Link).HasMaxLength(2000);
 
         //author and title combination should be unique
-        builder.HasIndex(x => new { x.Title, x.Author })
-            .IsUnique();
+        //I had to comment this because I found some exceptional data in data.csv!
+        //we can talk about this
+        //builder.HasIndex(x => new { x.Title, x.Author })
+        //    .IsUnique();
 
         //may be it can be better :-?
         string assemblyPath = AppDomain.CurrentDomain.BaseDirectory;
         var filePath = Path.Combine(assemblyPath, AppConsts.Database.CsvFilePath);
         var seedData = CsvDataHelper.ReadCsv(filePath);
 
+        
         if (seedData.Any())
         {
             builder.HasData(seedData);

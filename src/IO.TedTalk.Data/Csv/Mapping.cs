@@ -6,7 +6,6 @@ internal class TedMapConfiguration : ClassMap<Ted>
 {
     public TedMapConfiguration()
     {
-        //Map(m => m.Id).Name(nameof(Ted.Id).ToLower());
         Map(m => m.Title).Name(nameof(Ted.Title).ToLower());
         Map(m => m.Author).Name(nameof(Ted.Author).ToLower());
         Map(m => m.Views).Name(nameof(Ted.Views).ToLower());

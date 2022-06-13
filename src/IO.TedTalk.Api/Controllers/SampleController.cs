@@ -1,4 +1,6 @@
-﻿using IO.TedTalk.Api;
+﻿using Io.TedTalk.Data.Csv;
+using IO.TedTalk.Api;
+using IO.TedTalk.Core;
 using IO.TedTalk.Services.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;

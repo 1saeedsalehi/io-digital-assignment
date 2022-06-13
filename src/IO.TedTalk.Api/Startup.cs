@@ -1,7 +1,6 @@
 ﻿using System.Reflection;
 using AutoMapper;
 using FluentValidation;
-using Io.TedTalk.Api.Helpers;
 using IO.TedTalk.Api.Framrwork.AspNetCore.Config;
 using IO.TedTalk.Api.Framrwork.AspNetCore.Mvc.ExceptionHandling;
 using IO.TedTalk.Api.Framrwork.AspNetCore.Mvc.Results;
@@ -109,8 +108,7 @@ public class Startup
 
 
         //Register Services in DI
-        services.AddTransient<SampleService>()
-            .AddTransient<FileHelper>();
+        services.AddTransient<SampleService>();
 
        
 
