@@ -1,10 +1,14 @@
-﻿using Io.TedTalk.Core.Entities;
+﻿using System.Reflection;
+using Io.TedTalk.Core.Entities;
+using Io.TedTalk.Data.Csv;
+using IO.TedTalk.Core;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Io.TedTalk.Data.EntityConfigurations;
 public class TedEntityTypeConfiguration : IEntityTypeConfiguration<Ted>
 {
+   
     public void Configure(EntityTypeBuilder<Ted> builder)
     {
         builder.HasKey(x => x.Id);
@@ -15,5 +19,15 @@ public class TedEntityTypeConfiguration : IEntityTypeConfiguration<Ted>
         //author and title combination should be unique
         builder.HasIndex(x => new { x.Title, x.Author })
             .IsUnique();
+
+        //may be it can be better :-?
+        string assemblyPath = AppDomain.CurrentDomain.BaseDirectory;
+        var filePath = Path.Combine(assemblyPath, AppConsts.Database.CsvFilePath);
+        var seedData = CsvDataHelper.ReadCsv(filePath);
+
+        if (seedData.Any())
+        {
+            builder.HasData(seedData);
+        }
     }
 }
