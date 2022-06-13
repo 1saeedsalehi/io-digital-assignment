@@ -48,10 +48,4 @@
     <ProjectReference Include="..\IO.TedTalk.Services\IO.TedTalk.Services.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Update="Uploads\data.csv">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
 </Project>
