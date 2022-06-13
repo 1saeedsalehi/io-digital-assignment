@@ -54,7 +54,7 @@ use this command to build an image from this project
 
 then make a container with image you have build in previous step:
 
-` docker run -d -p 7012:80 --name io_assignment`
+`docker run io_assignment -p 7012:80 --name io_assignment`
 
 
 
