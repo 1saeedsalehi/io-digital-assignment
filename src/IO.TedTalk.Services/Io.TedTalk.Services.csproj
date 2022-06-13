@@ -17,8 +17,4 @@
     <ProjectReference Include="..\IO.TedTalk.Data\IO.TedTalk.Data.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="HttpClients\" />
-  </ItemGroup>
-
 </Project>

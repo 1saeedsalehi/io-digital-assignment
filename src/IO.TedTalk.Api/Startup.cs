@@ -1,6 +1,9 @@
 ﻿using System.Reflection;
 using AutoMapper;
 using FluentValidation;
+using Io.TedTalk.Services.Repositories;
+using Io.TedTalk.Services.Repositories.Implementations;
+using Io.TedTalk.Services.Services;
 using IO.TedTalk.Api.Framrwork.AspNetCore.Config;
 using IO.TedTalk.Api.Framrwork.AspNetCore.Mvc.ExceptionHandling;
 using IO.TedTalk.Api.Framrwork.AspNetCore.Mvc.Results;
@@ -9,7 +12,6 @@ using IO.TedTalk.Api.Framrwork.Models;
 using IO.TedTalk.Core;
 using IO.TedTalk.Data;
 using IO.TedTalk.Services;
-using IO.TedTalk.Services.Services;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
@@ -108,9 +110,11 @@ public class Startup
 
 
         //Register Services in DI
-        services.AddTransient<SampleService>();
+        services
+            .AddTransient<TedService>()
+            .AddTransient<ITedRepository, TedRepository>();
 
-       
+
 
     }
 

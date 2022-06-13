@@ -57,9 +57,6 @@ public class GlobalExceptionFilter : IExceptionFilter
         context.Result = new ObjectResult(
             new IOApiResponse(_errorInfoBuilder.BuildForException(context.Exception, _serviceInfo?.NameVersion), unathorized));
 
-        //EventBus.Trigger(this, new AbpHandledExceptionData(context.Exception));
-
-        //context.Exception = null; // Handled! // TODO: I'll uncomment it after a while
         context.ExceptionHandled = true;
     }
 
@@ -77,9 +74,9 @@ public class GlobalExceptionFilter : IExceptionFilter
         }
 
         
-        if (context.Exception is IOInvalidOperationException)
+        if (context.Exception is EntitytNotFoundException)
         {
-            return (int)HttpStatusCode.BadRequest;
+            return (int)HttpStatusCode.NotFound;
         }
 
         //if none of above?

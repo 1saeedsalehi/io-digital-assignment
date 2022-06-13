@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using Io.TedTalk.Core.DTOs;
+using Io.TedTalk.Core.Entities;
 
 namespace IO.TedTalk.Services;
 
@@ -6,7 +8,7 @@ public class DefaultMappingProfile : Profile
 {
     public DefaultMappingProfile()
     {
-
-        //TODO : mapping goes here!
+        CreateMap<CreateTedDto, Ted>()
+            .ForMember(x => x.Id, opt => opt.Ignore());
     }
 }

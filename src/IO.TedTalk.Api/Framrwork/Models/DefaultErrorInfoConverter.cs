@@ -161,7 +161,7 @@ internal class DefaultErrorInfoConverter : IExceptionToErrorInfoConverter
 
             if (validationResult.MemberNames != null && validationResult.MemberNames.Any())
             {
-                validationError.Members = validationResult.MemberNames.Select(m => m.ToCamelCase()).ToArray();
+                validationError.Members = validationResult.MemberNames.Select(m => m.ToUpper()).ToArray();
             }
 
             //If someone doesn't pass the member names correctly, we just use a counter instead

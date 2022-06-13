@@ -9,12 +9,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+      <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="5.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" Version="5.0.0" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="6.0.0" />
     <PackageReference Include="Microsoft.Extensions.Options" Version="6.0.0" />
-    <PackageReference Include="prometheus-net" Version="5.0.2" />
-    <PackageReference Include="prometheus-net.AspNetCore" Version="5.0.2" />
     <PackageReference Include="Serilog.AspNetCore" Version="4.1.0" />
     <PackageReference Include="Serilog.Formatting.Elasticsearch" Version="8.4.1" />
     <PackageReference Include="Serilog.Sinks.Async" Version="1.5.0" />
@@ -29,23 +28,16 @@
       </PackageReference>
   </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="OpenTelemetry.Extensions.Hosting" Version="1.0.0-rc7" />
-    <PackageReference Include="OpenTelemetry.Instrumentation.AspNetCore" Version="1.0.0-rc7" />
-    <PackageReference Include="OpenTelemetry.Instrumentation.StackExchangeRedis" Version="1.0.0-rc7" />
-    <PackageReference Include="OpenTelemetry.Exporter.Zipkin" Version="1.1.0" />
-    <PackageReference Include="OpenTelemetry.Instrumentation.Http" Version="1.0.0-rc7" />
-    <PackageReference Include="OpenTelemetry.Contrib.Instrumentation.MassTransit" Version="1.0.0-beta2" />
-    <PackageReference Include="OpenTelemetry.Instrumentation.SqlClient" Version="1.0.0-rc7" />
-    <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
-    <PackageReference Include="zipkin4net" Version="1.5.0" />
-
-  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\IO.TedTalk.Core\IO.TedTalk.Core.csproj" />
     <ProjectReference Include="..\IO.TedTalk.Data\IO.TedTalk.Data.csproj" />
     <ProjectReference Include="..\IO.TedTalk.Services\IO.TedTalk.Services.csproj" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Folder Include="Mediators\" />
   </ItemGroup>
 
 </Project>
