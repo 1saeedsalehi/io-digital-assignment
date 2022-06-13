@@ -5,6 +5,11 @@ internal class ErrorInfoBuilder : IErrorInfoBuilder
 {
     private IExceptionToErrorInfoConverter _converter { get; set; }
 
+    public ErrorInfoBuilder(IExceptionToErrorInfoConverter converter)
+    {
+        _converter = converter;
+    }
+
 
     /// <inheritdoc/>
     public ErrorInfo BuildForException(Exception exception)

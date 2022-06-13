@@ -7,13 +7,11 @@ namespace IO.TedTalk.Api.Framrwork.Models;
 internal class DefaultErrorInfoConverter : IExceptionToErrorInfoConverter
 {
     private readonly IWebHostEnvironment _env;
-    private readonly ILogger _logger;
 
     
-    public DefaultErrorInfoConverter(IWebHostEnvironment env, ILogger logger)
+    public DefaultErrorInfoConverter(IWebHostEnvironment env)
     {
         _env = env;
-        _logger = logger;
     }
 
     public IExceptionToErrorInfoConverter Next { set; private get; }

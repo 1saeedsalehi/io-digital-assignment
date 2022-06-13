@@ -75,6 +75,7 @@ public class Startup
             //uncomment for v2
             //options.SwaggerDoc("v2", new() { Title = AppConsts.ApiTitle, Version = "v2" });
 
+
             options.AddSecurityDefinition("Bearer", new()
             {
                 Description =
@@ -83,6 +84,9 @@ public class Startup
                 In = ParameterLocation.Header,
                 Type = SecuritySchemeType.ApiKey
             });
+
+            var filePath = Path.Combine(AppContext.BaseDirectory, $"IO.TedTalk.Api.xml");
+            options.IncludeXmlComments(filePath);
         });
 
         //db context
@@ -102,6 +106,7 @@ public class Startup
         services.AddTransient<ResultFilter>();
         services.AddTransient<IActionResultWrapperFactory, ActionResultWrapperFactory>();
         services.AddTransient<IErrorInfoBuilder, ErrorInfoBuilder>();
+        services.AddTransient<IExceptionToErrorInfoConverter, DefaultErrorInfoConverter>();
         services.AddTransient<GlobalExceptionFilter>();
 
         services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
