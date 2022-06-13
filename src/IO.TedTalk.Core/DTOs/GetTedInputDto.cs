@@ -14,4 +14,11 @@ public class GetTedInputDto
         MaxResultCount = 10;
         SkipCount = 0;
     }
+
+    public override string ToString()
+    {
+        //used for cache key
+        //it can be impelemented in a better way
+        return $"{nameof(GetTedInputDto)}-{Author}-{Title}-{Views}-{Likes}-{MaxResultCount}-{SkipCount}";
+    }
 }

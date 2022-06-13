@@ -27,7 +27,7 @@ public class ValidateModelAttribute : ActionFilterAttribute
                 }
             }
 
-            throw new IOValidationException("داده‌های ورودی معتبر نیست. لطفا جزئیات را ببینید", validationErrors);
+            throw new IOValidationException("Invalid inpit!", validationErrors);
         }
     }
 }

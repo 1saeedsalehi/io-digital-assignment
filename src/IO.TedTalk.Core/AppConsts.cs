@@ -1,4 +1,6 @@
-﻿namespace IO.TedTalk.Core;
+﻿using Microsoft.Extensions.Caching.Memory;
+
+namespace IO.TedTalk.Core;
 
 public static class AppConsts
 {
@@ -22,4 +24,18 @@ public static class AppConsts
         public static string CsvFilePath { get;  private set; }
         public static string DbPath { get; }
     }
+
+
+    public static class Cache
+    {
+        static Cache()
+        {
+            CacheOptions = new MemoryCacheEntryOptions()
+               .SetSlidingExpiration(TimeSpan.FromMinutes(30));
+
+        }
+
+        public static MemoryCacheEntryOptions CacheOptions { get; private set; }
+    }
+    
 }

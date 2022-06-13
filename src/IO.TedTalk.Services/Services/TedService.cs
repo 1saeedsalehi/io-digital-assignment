@@ -2,6 +2,8 @@
 using Io.TedTalk.Core.DTOs;
 using Io.TedTalk.Core.Entities;
 using Io.TedTalk.Services.Repositories;
+using IO.TedTalk.Core;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace Io.TedTalk.Services.Services;
 
@@ -10,10 +12,15 @@ public class TedService
     private readonly ITedRepository _repository;
     private readonly IMapper _mapper;
 
-    public TedService(ITedRepository repository, IMapper mapper)
+    private readonly IMemoryCache _memoryCache;
+
+    public TedService(ITedRepository repository,
+        IMapper mapper,
+        IMemoryCache memoryCache)
     {
         _repository = repository;
         _mapper = mapper;
+        _memoryCache = memoryCache;
     }
     public ValueTask<int> Create(CreateTedDto dto, CancellationToken cancellationToken = default)
     {
@@ -26,9 +33,20 @@ public class TedService
         return _repository.Delete(idToBeDeleted, cancellationToken);
     }
 
-    public Task<IEnumerable<Ted>> GetAll(GetTedInputDto input, CancellationToken cancellation = default)
+    public async Task<IEnumerable<Ted>> GetAll(GetTedInputDto input, CancellationToken cancellation = default)
     {
-        return _repository.GetAll(input, cancellation);
+        IEnumerable<Ted> result;
+
+        // If found in cache, return cached data
+        var cacheKey = input.ToString();
+
+        if (!_memoryCache.TryGetValue(cacheKey, out result))
+        {
+            //get and store in cache can be implemented with an extension method
+            result = await _repository.GetAll(input, cancellation);
+            _memoryCache.Set(cacheKey, result, AppConsts.Cache.CacheOptions);
+        }
+        return result;
     }
 
     public Task<Ted> GetById(int id, CancellationToken cancellationToken = default)

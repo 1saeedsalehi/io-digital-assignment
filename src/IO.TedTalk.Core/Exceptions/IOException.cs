@@ -2,7 +2,7 @@
 
 /// <inheritdoc />
 /// <summary>
-/// Base Exception for all exceptions of Aivwa. 
+/// Base Exception for all exceptions of IOException. 
 /// </summary>
 public class IOException : Exception
 {
@@ -39,27 +39,4 @@ public class IOException : Exception
     /// </summary>
     public LogSeverity Severity { get; protected set; }
 
-    public override string ToString()
-    {
-        string baseMessage = base.ToString();
-        if (!string.IsNullOrEmpty(Message))
-        {
-            baseMessage = baseMessage.Replace(Message, $"{Message}, TechnicalMessage: {TechnicalMessage}");
-        }
-        else
-        {
-            if (InnerException != null)
-            {
-                int index = baseMessage.IndexOf("--->");
-                if (index >= 0)
-                    baseMessage = baseMessage.Insert(index, $"TechnicalMessage: {TechnicalMessage}");
-            }
-            else
-            {
-                baseMessage = baseMessage + $" TechnicalMessage: {TechnicalMessage}";
-            }
-        }
-
-        return baseMessage;
-    }
 }

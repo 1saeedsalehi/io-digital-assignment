@@ -30,14 +30,9 @@
 
 
   <ItemGroup>
-    <ProjectReference Include="..\IO.TedTalk.Core\IO.TedTalk.Core.csproj" />
-    <ProjectReference Include="..\IO.TedTalk.Data\IO.TedTalk.Data.csproj" />
-    <ProjectReference Include="..\IO.TedTalk.Services\IO.TedTalk.Services.csproj" />
-  </ItemGroup>
-
-
-  <ItemGroup>
-    <Folder Include="Mediators\" />
+    <ProjectReference Include="..\Io.TedTalk.Core\IO.TedTalk.Core.csproj" />
+    <ProjectReference Include="..\Io.TedTalk.Data\IO.TedTalk.Data.csproj" />
+    <ProjectReference Include="..\Io.TedTalk.Services\IO.TedTalk.Services.csproj" />
   </ItemGroup>
 
 </Project>

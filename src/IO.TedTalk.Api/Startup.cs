@@ -50,6 +50,8 @@ public class Startup
 
         services.AddHttpContextAccessor();
 
+        services.AddMemoryCache();
+
         services.AddApiVersioning(setup =>
         {
             setup.DefaultApiVersion = new ApiVersion(1, 0);
