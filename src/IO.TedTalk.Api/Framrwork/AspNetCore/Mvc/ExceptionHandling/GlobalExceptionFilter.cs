@@ -30,21 +30,14 @@ public class GlobalExceptionFilter : IExceptionFilter
 
     public virtual void OnException(ExceptionContext context)
     {
-        var wrapResultAttribute =
-            ReflectionHelper.GetSingleAttributeOfMemberOrDeclaringTypeOrDefault(
-                context.ActionDescriptor.GetMethodInfo(),
-                _configuration.DefaultWrapResultAttribute
-            );
 
-        if (wrapResultAttribute.LogError)
-        {
-            SeverityAwareLog(context.Exception);
-        }
 
-        if (wrapResultAttribute.WrapOnError)
-        {
-            HandleAndWrapException(context);
-        }
+        SeverityAwareLog(context.Exception);
+
+
+
+        HandleAndWrapException(context);
+
     }
 
     protected virtual void HandleAndWrapException(ExceptionContext context)
@@ -67,13 +60,13 @@ public class GlobalExceptionFilter : IExceptionFilter
             return (int)hasHttpStatusExp.HttpStatusCode;
         }
 
-        
+
         if (context.Exception is IOValidationException)
         {
             return (int)HttpStatusCode.BadRequest;
         }
 
-        
+
         if (context.Exception is EntitytNotFoundException)
         {
             return (int)HttpStatusCode.NotFound;
@@ -91,18 +84,19 @@ public class GlobalExceptionFilter : IExceptionFilter
     {
         var logSeverity = LogSeverity.Error;
         string expMessage = exception.Message;
-        string expTechMessage = "";
+        
         if (exception is Core.Exceptions.IOException exp)
         {
             logSeverity = exp.Severity;
-            expTechMessage = exp.TechnicalMessage;
         }
-        // TODO: Move it to NLog configuration file log parameters
         string message = string.Format(
-            "Processed an unhandled exception of type {0}:\r\nMessage: {1}\r\nTechnicalMessage: {2}",
-            exception.GetType().Name, EscapeForStringFormat(expMessage), EscapeForStringFormat(expTechMessage));
+            "Processed an unhandled exception of type {0}:\r\nMessage: {1}",
+            exception.GetType().Name, EscapeForStringFormat(expMessage));
         EventId eventId = exception is Core.Exceptions.IOException aivwaException ? new EventId(aivwaException.ErrorCode ?? 0) : default;
 
+
+        //it can be a security issue
+        //we should handle exceptions and eliminate sensetive data from it
         switch (logSeverity)
         {
             case LogSeverity.Debug:

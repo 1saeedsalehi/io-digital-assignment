@@ -4,5 +4,4 @@ namespace IO.TedTalk.Api.Framrwork.AspNetCore.Config;
 
 public interface IAspnetCoreConfiguration
 {
-    WrapResultAttribute DefaultWrapResultAttribute { get; }
 }
