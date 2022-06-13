@@ -1,24 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Globalization;
 using CsvHelper;
 using Io.TedTalk.Core.Entities;
-using IO.TedTalk.Core.Exceptions;
 
 namespace Io.TedTalk.Data.Csv;
-internal class CsvDataHelper
+public static class CsvDataHelper
 {
-    public List<Ted> ReadCsv(string csvPath)
+    public static IEnumerable<Ted> ReadCsv(string filePath)
     {
         try
         {
-            using var reader = new StreamReader(csvPath);
+            using var reader = new StreamReader(filePath);
             using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
             csv.Context.RegisterClassMap<TedMapConfiguration>();
             var records = csv.GetRecords<Ted>().ToList();
+
+            //Workaround to fill Id's in SQLite :)
+            var id = 1;
+            records.ForEach(record => record.Id = id++);
+
+
             return records;
         }
         catch (CsvHelperException e)
