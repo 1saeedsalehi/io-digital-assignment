@@ -9,9 +9,7 @@ internal class DefaultErrorInfoConverter : IExceptionToErrorInfoConverter
     private readonly IWebHostEnvironment _env;
     private readonly ILogger _logger;
 
-    //private readonly IAbpWebCommonModuleConfiguration _configuration;
-    //private readonly ILocalizationManager _localizationManager;
-
+    
     public DefaultErrorInfoConverter(IWebHostEnvironment env, ILogger logger)
     {
         _env = env;
@@ -20,17 +18,12 @@ internal class DefaultErrorInfoConverter : IExceptionToErrorInfoConverter
 
     public IExceptionToErrorInfoConverter Next { set; private get; }
 
+    //to eliminate error detail in production environment
     private bool IncludeErrorDetails
     {
         get
         {
-
-            if (_env != null)
-            {
-                return !_env.IsProduction();
-            }
-
-            return true;
+            return _env != null ? !_env.IsProduction() : true;
         }
     }
 
@@ -38,6 +31,7 @@ internal class DefaultErrorInfoConverter : IExceptionToErrorInfoConverter
     {
         var errorInfo = CreateErrorInfoWithoutCode(exception);
 
+        //for security reason
         if (IncludeErrorDetails)
         {
             var detailBuilder = new StringBuilder();
@@ -55,10 +49,6 @@ internal class DefaultErrorInfoConverter : IExceptionToErrorInfoConverter
 
 
 
-    public Exception ReverseConvert(ErrorInfo errorInfo)
-    {
-        throw new NotImplementedException();
-    }
 
     #region Private Methods
 
@@ -79,7 +69,7 @@ internal class DefaultErrorInfoConverter : IExceptionToErrorInfoConverter
 
         if (exception is IOValidationException validationException)
         {
-            return new ErrorInfo(L(validationException.Message))
+            return new ErrorInfo(validationException.Message)
             {
                 ValidationErrors = GetValidationErrorInfoes(validationException),
                 Details = GetValidationErrorNarrative(validationException)
@@ -89,13 +79,12 @@ internal class DefaultErrorInfoConverter : IExceptionToErrorInfoConverter
         
 
         // Finally, check if it's a IOException 
-        if (exception is Core.Exceptions.IOException aivwaException)
+        if (exception is Core.Exceptions.IOException ioException)
         {
-            // Exlucde TechnicalMessage if it's Production env
-            return new ErrorInfo(L(aivwaException.Message), IncludeErrorDetails ? aivwaException.TechnicalMessage : "");
+            return new ErrorInfo(ioException.Message);
         }
 
-        return new ErrorInfo(L("InternalServerError"));
+        return new ErrorInfo("InternalServerError");
     }
 
     private void CreateDetailsFromException(Exception exception, StringBuilder detailBuilder)
@@ -103,16 +92,7 @@ internal class DefaultErrorInfoConverter : IExceptionToErrorInfoConverter
         //Exception Message
         detailBuilder.AppendLine(exception.GetType().Name + ": " + exception.Message);
 
-        //Additional info for UserFriendlyException
-        if (exception is Core.Exceptions.IOException)
-        {
-            var userFriendlyException = exception as Core.Exceptions.IOException;
-            if (!string.IsNullOrEmpty(userFriendlyException.TechnicalMessage))
-            {
-                detailBuilder.AppendLine(userFriendlyException.TechnicalMessage);
-            }
-        }
-
+       
         //Additional info for AbpValidationException
         if (exception is IOValidationException)
         {
@@ -164,7 +144,6 @@ internal class DefaultErrorInfoConverter : IExceptionToErrorInfoConverter
                 validationError.Members = validationResult.MemberNames.Select(m => m.ToUpper()).ToArray();
             }
 
-            //If someone doesn't pass the member names correctly, we just use a counter instead
             var key = string.Join(",", validationError.Members) ?? i++.ToString();
             if (!validationErrorInfos.ContainsKey(key))
             {
@@ -183,7 +162,7 @@ internal class DefaultErrorInfoConverter : IExceptionToErrorInfoConverter
     private string GetValidationErrorNarrative(IOValidationException validationException)
     {
         var detailBuilder = new StringBuilder();
-        detailBuilder.AppendLine(L("ValidationNarrativeTitle"));
+        detailBuilder.AppendLine("ValidationNarrativeTitle");
 
         foreach (var validationResult in validationException.ValidationErrors)
         {
@@ -194,21 +173,7 @@ internal class DefaultErrorInfoConverter : IExceptionToErrorInfoConverter
         return detailBuilder.ToString();
     }
 
-    private string L(string message)
-    {
-        //TODO: implement localization!
-        try
-        {
-            if (message == "EntityNotFound")
-                return "موجودیت مورد نظر یافت نشد";
-            return message ?? "";
-        }
-        catch (Exception)
-        {
-            return message;
-        }
-    }
-
+    
     #endregion
 
 }

@@ -4,7 +4,6 @@ using FluentValidation;
 using Io.TedTalk.Services.Repositories;
 using Io.TedTalk.Services.Repositories.Implementations;
 using Io.TedTalk.Services.Services;
-using IO.TedTalk.Api.Framrwork.AspNetCore.Config;
 using IO.TedTalk.Api.Framrwork.AspNetCore.Mvc.ExceptionHandling;
 using IO.TedTalk.Api.Framrwork.AspNetCore.Mvc.Results;
 using IO.TedTalk.Api.Framrwork.AspNetCore.Mvc.Results.Wrapping;
@@ -94,15 +93,14 @@ public class Startup
         // Configure options
         services.Configure<Settings>(Configuration);
 
-        //Setting up framework
+        
         //Adds services required for using options.
         services.AddOptions();
         services.AddCors();
 
-        // Add Framework to DI
+        // Setting up framework DI
         services.AddTransient<ResultFilter>();
         services.AddTransient<IActionResultWrapperFactory, ActionResultWrapperFactory>();
-        services.AddTransient<IAspnetCoreConfiguration, AspnetCoreConfiguration>();
         services.AddTransient<IErrorInfoBuilder, ErrorInfoBuilder>();
         services.AddTransient<GlobalExceptionFilter>();
 

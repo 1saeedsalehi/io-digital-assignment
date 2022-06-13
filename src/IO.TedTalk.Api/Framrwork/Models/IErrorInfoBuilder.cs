@@ -10,18 +10,6 @@ public interface IErrorInfoBuilder
     /// </summary>
     /// <param name="exception">The exception object</param>
     /// <returns>Created <see cref="ErrorInfo"/> object</returns>
-    ErrorInfo BuildForException(Exception exception, string source);
+    ErrorInfo BuildForException(Exception exception);
 
-    /// <summary>
-    /// Creates a new instance of <see cref="Exception"/> using the given <paramref name="errorInfo"/> object.
-    /// </summary>
-    /// <param name="errorInfo"></param>
-    /// <returns></returns>
-    Exception BuildFromErrorInfo(ErrorInfo errorInfo);
-
-    /// <summary>
-    /// Adds an <see cref="IExceptionToErrorInfoConverter"/> object.
-    /// </summary>
-    /// <param name="converter">Converter</param>
-    void AddExceptionConverter(IExceptionToErrorInfoConverter converter);
 }

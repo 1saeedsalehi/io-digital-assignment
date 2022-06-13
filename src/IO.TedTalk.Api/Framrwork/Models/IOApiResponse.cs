@@ -39,8 +39,8 @@ public class IOApiResponse : IOApiResponse<object>
     /// </summary>
     /// <param name="error">Error details</param>
     /// <param name="unauthorizedRequest">Used to indicate that the current user has no privilege to perform this request</param>
-    public IOApiResponse(ErrorInfo error, bool unauthorizedRequest = false)
-        : base(error, unauthorizedRequest)
+    public IOApiResponse(ErrorInfo error)
+        : base(error)
     {
     }
 }

@@ -1,40 +1,28 @@
 ﻿using System.Net;
 using System.Text;
-using IO.TedTalk.Api.Framrwork.AspNetCore.Config;
-using IO.TedTalk.Api.Framrwork.AspNetCore.Reflection;
-using IO.TedTalk.Api.Framrwork.Metadata;
 using IO.TedTalk.Api.Framrwork.Models;
 using IO.TedTalk.Core;
 using IO.TedTalk.Core.Exceptions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
-using Microsoft.Extensions.Options;
 
 namespace IO.TedTalk.Api.Framrwork.AspNetCore.Mvc.ExceptionHandling;
 
 public class GlobalExceptionFilter : IExceptionFilter
 {
     protected readonly ILogger _logger;
-    protected readonly IAspnetCoreConfiguration _configuration;
     protected readonly IErrorInfoBuilder _errorInfoBuilder;
-    protected readonly ServiceInformation _serviceInfo;
 
     public GlobalExceptionFilter(ILogger<GlobalExceptionFilter> logger,
-        IAspnetCoreConfiguration configuration, IErrorInfoBuilder errorInfoBuilder, IOptions<ServiceInformation> options)
+        IErrorInfoBuilder errorInfoBuilder)
     {
         _logger = logger;
-        _configuration = configuration;
         _errorInfoBuilder = errorInfoBuilder;
-        _serviceInfo = options.Value;
     }
 
     public virtual void OnException(ExceptionContext context)
     {
-
-
         SeverityAwareLog(context.Exception);
-
-
 
         HandleAndWrapException(context);
 
@@ -45,21 +33,14 @@ public class GlobalExceptionFilter : IExceptionFilter
 
         context.HttpContext.Response.StatusCode = GetStatusCode(context);
 
-        bool unathorized = context.HttpContext.Response.StatusCode == (int)HttpStatusCode.Unauthorized;
-
         context.Result = new ObjectResult(
-            new IOApiResponse(_errorInfoBuilder.BuildForException(context.Exception, _serviceInfo?.NameVersion), unathorized));
+            new IOApiResponse(_errorInfoBuilder.BuildForException(context.Exception)));
 
         context.ExceptionHandled = true;
     }
 
     protected virtual int GetStatusCode(ExceptionContext context)
     {
-        if (context.Exception is IHasHttpStatusCode hasHttpStatusExp)
-        {
-            return (int)hasHttpStatusExp.HttpStatusCode;
-        }
-
 
         if (context.Exception is IOValidationException)
         {

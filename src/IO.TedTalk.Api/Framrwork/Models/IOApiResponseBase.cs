@@ -24,7 +24,7 @@ public abstract class IOApiResponseBase
     public bool UnauthorizedRequest { get; set; }
 
     /// <summary>
-    /// It's used in the client to detect if this is a response wrapped by Aivwa framework.
+    /// It's used in the client to detect if this is a response wrapped by IO.TedTalk Framework.
     /// </summary>
     public bool __wrapped { get; } = true;
 

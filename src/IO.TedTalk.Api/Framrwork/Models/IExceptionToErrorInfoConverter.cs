@@ -18,10 +18,4 @@ public interface IExceptionToErrorInfoConverter
     /// <returns>Error info or null</returns>
     ErrorInfo Convert(Exception exception);
 
-    /// <summary>
-    /// The reverse conversion method.
-    /// </summary>
-    /// <param name="exception"></param>
-    /// <returns></returns>
-    Exception ReverseConvert(ErrorInfo exception);
 }

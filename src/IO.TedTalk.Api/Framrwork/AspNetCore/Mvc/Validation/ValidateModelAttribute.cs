@@ -12,9 +12,6 @@ public class ValidateModelAttribute : ActionFilterAttribute
     {
         if (!context.ModelState.IsValid)
         {
-            // ModelState is in Microsoft.AspNetCore.Mvc so we can't include it in our AivwaValidationException.
-            // So we use System.ComponentModel.DataAnnotations.ValidationResult which is in more general namespace
-            // Any alternative candidate?!
 
             IList<ValidationResult> validationErrors = new List<ValidationResult>();
             foreach (var key in context.ModelState.Keys)
