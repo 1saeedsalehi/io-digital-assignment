@@ -56,6 +56,12 @@ then make a container with image you have build in previous step:
 
 `docker run io_assignment -p 7012:80 --name io_assignment`
 
+# If I had more time..
+- use mediator pattern to impelemt a simple CQRS pattern
+- write more unit tests to test our business logic and util methods
+- resolve all todos in my code
+- refactor my codes and do some cleanups
+
 
 
 
