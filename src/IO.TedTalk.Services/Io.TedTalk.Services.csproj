@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Io.TedTalk.Data\IO.TedTalk.Data.csproj" />
+    <ProjectReference Include="..\IO.TedTalk.Data\IO.TedTalk.Data.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,4 +1,6 @@
-﻿namespace Io.TedTalk.Core.Entities;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Io.TedTalk.Core.Entities;
 
 public class Ted : BaseEntity
 {

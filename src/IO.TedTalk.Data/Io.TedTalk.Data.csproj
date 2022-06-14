@@ -17,7 +17,7 @@
     </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Io.TedTalk.Core\IO.TedTalk.Core.csproj" />
+    <ProjectReference Include="..\IO.TedTalk.Core\IO.TedTalk.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>

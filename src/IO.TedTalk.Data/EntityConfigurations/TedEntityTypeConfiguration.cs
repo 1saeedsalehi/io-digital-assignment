@@ -12,9 +12,9 @@ public class TedEntityTypeConfiguration : IEntityTypeConfiguration<Ted>
     public void Configure(EntityTypeBuilder<Ted> builder)
     {
         builder.HasKey(x => x.Id);
-        builder.Property(x => x.Title).HasMaxLength(400);
-        builder.Property(x => x.Author).HasMaxLength(100);
-        builder.Property(x => x.Link).HasMaxLength(2000);
+        builder.Property(x => x.Title).HasMaxLength(400).IsRequired();
+        builder.Property(x => x.Author).HasMaxLength(100).IsRequired();
+        builder.Property(x => x.Link).HasMaxLength(2000).IsRequired();
 
         //author and title combination should be unique
         //I had to comment this because I found some exceptional data in data.csv!

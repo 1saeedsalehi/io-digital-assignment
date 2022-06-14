@@ -15,4 +15,4 @@ WORKDIR /app
 
 COPY --from=build-env /app/publish .
 
-ENTRYPOINT ["dotnet", "Io.TedTalk.Api.dll"]
+ENTRYPOINT ["dotnet", "IO.TedTalk.Api.dll"]

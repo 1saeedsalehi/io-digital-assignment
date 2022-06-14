@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IO.TedTalk.Core", "Io.TedTa
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{747575A8-A86E-44D3-A0E6-7726B8ADA351}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Io.TedTalk.Tests", "Io.TedTalk.Tests\Io.TedTalk.Tests.csproj", "{8B527818-744B-42E4-B8D8-CB01811CB497}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IO.TedTalk.UnitTests", "IO.TedTalk.UnitTests\IO.TedTalk.UnitTests.csproj", "{015A75D2-172D-4D74-9FE1-CBA5F8E65864}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,16 +37,16 @@ Global
 		{4E24516A-20D1-4E19-8EF5-83F78FC467B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4E24516A-20D1-4E19-8EF5-83F78FC467B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4E24516A-20D1-4E19-8EF5-83F78FC467B7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8B527818-744B-42E4-B8D8-CB01811CB497}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8B527818-744B-42E4-B8D8-CB01811CB497}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8B527818-744B-42E4-B8D8-CB01811CB497}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8B527818-744B-42E4-B8D8-CB01811CB497}.Release|Any CPU.Build.0 = Release|Any CPU
+		{015A75D2-172D-4D74-9FE1-CBA5F8E65864}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{015A75D2-172D-4D74-9FE1-CBA5F8E65864}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{015A75D2-172D-4D74-9FE1-CBA5F8E65864}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{015A75D2-172D-4D74-9FE1-CBA5F8E65864}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{8B527818-744B-42E4-B8D8-CB01811CB497} = {747575A8-A86E-44D3-A0E6-7726B8ADA351}
+		{015A75D2-172D-4D74-9FE1-CBA5F8E65864} = {747575A8-A86E-44D3-A0E6-7726B8ADA351}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A9804EBB-C18E-4433-A3F6-4E783F65D308}
